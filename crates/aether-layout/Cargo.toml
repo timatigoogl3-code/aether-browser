@@ -1,0 +1,11 @@
+[package]
+name = "aether-layout"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+aether-dom = { path = "../aether-dom" }
+thiserror.workspace = true
+log.workspace = true
+serde.workspace = true

@@ -1,0 +1,19 @@
+[package]
+name = "aether-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+crate-type = ["rlib", "cdylib"]
+
+[dependencies]
+aether-net = { path = "../aether-net" }
+aether-dom = { path = "../aether-dom" }
+aether-js = { path = "../aether-js" }
+aether-layout = { path = "../aether-layout" }
+aether-render = { path = "../aether-render" }
+aether-tab = { path = "../aether-tab" }
+thiserror.workspace = true
+log.workspace = true
+jni = { version = "0.21", default-features = false }

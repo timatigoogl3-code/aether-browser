@@ -1,0 +1,23 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/aether-net",
+    "crates/aether-dom",
+    "crates/aether-js",
+    "crates/aether-layout",
+    "crates/aether-render",
+    "crates/aether-tab",
+    "crates/aether-core",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["cubetitled-ui"]
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies]
+thiserror = "2.0"
+log = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"

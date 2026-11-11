@@ -1,0 +1,12 @@
+[package]
+name = "aether-net"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+rustls = { version = "0.23", default-features = false, features = ["ring", "std"] }
+webpki-roots = "0.26"
+flate2 = "1.0"
+thiserror.workspace = true
+log.workspace = true

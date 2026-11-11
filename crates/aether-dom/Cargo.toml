@@ -1,0 +1,10 @@
+[package]
+name = "aether-dom"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+thiserror.workspace = true
+log.workspace = true
+serde.workspace = true
