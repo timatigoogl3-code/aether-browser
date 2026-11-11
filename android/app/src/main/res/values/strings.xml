@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aether</string>
+    <string name="search_hint">Search or enter address</string>
+    <string name="tab_count_default">1</string>
+</resources>

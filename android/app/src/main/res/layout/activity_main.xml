@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/claude_parchment">
+
+    <!-- Claude Warm Minimalist Top Bar -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:background="@color/claude_parchment">
+
+        <!-- Omnibox -->
+        <EditText
+            android:id="@+id/urlEditText"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:background="@drawable/omnibox_bg"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:hint="@string/search_hint"
+            android:textColorHint="@color/claude_muted"
+            android:textColor="@color/claude_ink"
+            android:textSize="14sp"
+            android:imeOptions="actionGo"
+            android:singleLine="true"
+            android:inputType="textUri" />
+
+        <!-- Tab Count Button -->
+        <TextView
+            android:id="@+id/tabCountBtn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/tab_badge_bg"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/claude_ink"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <!-- New Tab Button -->
+        <TextView
+            android:id="@+id/newTabBtn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="6dp"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/claude_ink"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Thin Claude Amber Progress Bar -->
+    <ProgressBar
+        android:id="@+id/pageProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:progressDrawable="@color/claude_progress"
+        android:visibility="gone" />
+
+    <!-- Tab Drawer Container (for Zero-RAM Tab Switcher) -->
+    <ListView
+        android:id="@+id/tabDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/claude_tab_bg"
+        android:divider="@color/claude_border"
+        android:dividerHeight="1dp"
+        android:visibility="gone" />
+
+    <!-- Main Gecko Viewport -->
+    <org.mozilla.geckoview.GeckoView
+        android:id="@+id/geckoView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

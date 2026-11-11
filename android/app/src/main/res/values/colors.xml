@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Claude Minimalist Warm Palette (Zero Neon) -->
+    <color name="claude_parchment">#FAF7F2</color>
+    <color name="claude_surface">#FFFFFF</color>
+    <color name="claude_ink">#1F1E1D</color>
+    <color name="claude_muted">#6E6A63</color>
+    <color name="claude_border">#E5E0D8</color>
+    <color name="claude_accent_amber">#D97706</color>
+    <color name="claude_accent_amber_dark">#B45309</color>
+    <color name="claude_tab_bg">#F2ECE1</color>
+    <color name="claude_tab_active">#FFFFFF</color>
+    <color name="claude_progress">#D97706</color>
+</resources>
