@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "AetherWebCompatibility",
+  "version": "1.0.0",
+  "description": "Native ES2022/ES2023 polyfills and modern web compatibility for Aether Browser on Lenovo A536",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["polyfills.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}

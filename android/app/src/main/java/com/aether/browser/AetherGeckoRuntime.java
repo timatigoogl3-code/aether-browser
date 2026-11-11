@@ -10,6 +10,7 @@ import org.mozilla.geckoview.GeckoRuntimeSettings;
  *  1. Independent Mozilla NSS Root CA store enforcement via enterprise roots.
  *  2. Mali-400 MP2 GPU Hardware acceleration at 60 FPS (MSAA disabled for bandwidth).
  *  3. Single-process execution (useMultiprocess(false)) for 1GB RAM Lenovo A536.
+ *  4. Native built-in WebExtension injecting ES2022/ES2023 polyfills at document_start.
  */
 public class AetherGeckoRuntime {
     private static final String TAG = "Aether/Runtime";
@@ -43,6 +44,7 @@ public class AetherGeckoRuntime {
                 "--pref", "layers.acceleration.force-enabled=true",
                 "--pref", "layers.offmainthreadcomposition.enabled=true",
                 "--pref", "layers.async-pan-zoom.enabled=true",
+                "--pref", "dom.event.touch.passive=true",         // Ensure silky smooth 60 FPS touch scroll
 
                 // Low-memory footprint tuning for Lenovo A536 (1GB RAM)
                 "--pref", "browser.cache.memory.capacity=16384", // 16MB RAM cache limit
@@ -50,14 +52,28 @@ public class AetherGeckoRuntime {
                 "--pref", "image.mem.decode_on_draw=true",
                 "--pref", "image.mem.discardable=true",
                 "--pref", "javascript.options.mem.max=67108864",  // 64MB JS heap cap
+                "--pref", "browser.sessionhistory.max_total_viewers=0", // Discard background bfcache DOMs
 
                 // Modern web standards
                 "--pref", "dom.webcomponents.shadowdom.enabled=true",
                 "--pref", "layout.css.grid.enabled=true",
-                "--pref", "layout.css.flexbox.enabled=true"
+                "--pref", "layout.css.flexbox.enabled=true",
+                "--pref", "media.mediasource.enabled=true"
             });
 
             sRuntime = GeckoRuntime.create(context.getApplicationContext(), settingsBuilder.build());
+
+            // Install built-in WebExtension providing document_start ES2022/ES2023 polyfills
+            sRuntime.getWebExtensionController()
+                .ensureBuiltIn("resource://android/assets/extensions/compat/", "aether-compat@browser")
+                .then(extension -> {
+                    Log.i(TAG, "Built-in Aether Web Compatibility extension verified: " + extension);
+                    return null;
+                }, throwable -> {
+                    Log.w(TAG, "WebExtension installation note: " + throwable.getMessage());
+                    return null;
+                });
+
             Log.i(TAG, "Aether GeckoRuntime initialized successfully for Lenovo A536");
         }
         return sRuntime;
